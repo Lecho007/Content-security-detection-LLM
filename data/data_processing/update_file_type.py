@@ -1,6 +1,9 @@
 import json
 import csv
 
+"""
+    将json文件转换成csv
+"""
 # 类型映射字典：英文 -> 中文
 type_mapping = {
     "Insult": "脏话侮辱",

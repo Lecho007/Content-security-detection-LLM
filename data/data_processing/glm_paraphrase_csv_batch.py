@@ -2,7 +2,9 @@ import pandas as pd
 import time
 from zhipuai import ZhipuAI
 
-# GLM 处理模拟数据
+"""
+    使用 GLM模型 处理模拟数据
+"""
 
 # -------- 配置区域 --------
 API_KEY = "f41f762be4f9453aa5b6ee79c36c6d0e.2w1uBInSVMWzpIPc"  # ← 填自己的 ZhipuAI 密钥
