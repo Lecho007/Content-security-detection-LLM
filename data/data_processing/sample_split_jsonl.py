@@ -1,5 +1,7 @@
 import random
 
+"""按组随机采样并拆分 JSONL 数据集"""
+
 # ✅ 可调参数
 input_file = "merged_attack_data.jsonl"               # 输入文件
 sampled_file = "val.jsonl"         # 随机采样输出
