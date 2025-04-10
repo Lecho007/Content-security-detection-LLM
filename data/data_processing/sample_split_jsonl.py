@@ -3,12 +3,12 @@ import random
 """按组随机采样并拆分 JSONL 数据集"""
 
 # ✅ 可调参数
-input_file = "merged_attack_data.jsonl"               # 输入文件
-sampled_file = "val.jsonl"         # 随机采样输出
-remaining_file = "train.jsonl"     # 未采样输出
+input_file = ""               # 输入文件
+sampled_file = ""         # 随机采样输出
+remaining_file = ""     # 未采样输出
 
 group_size = 10       # 每组多少行
-sample_count = 1      # 每组采样多少行（可改成2、3...）
+sample_count = 2      # 每组采样多少行（可改成2、3...）
 
 # 读取非空行
 with open(input_file, "r", encoding="utf-8") as infile:
