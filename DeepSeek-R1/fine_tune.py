@@ -61,13 +61,25 @@ def tokenize(example):
 tokenized_train = train_dataset.map(tokenize)
 tokenized_eval = eval_dataset.map(tokenize)
 
+"""
+    参数	说明	推荐值
+    per_device_train_batch_size	每个设备的 batch size	2-8（根据显存）
+    gradient_accumulation_steps	梯度累积步数（等效大 batch）	4-8
+    num_train_epochs	训练轮数	3-5
+    learning_rate	学习率	1e-4 ~ 2e-4 LoRA推荐较大
+    fp16	是否使用混合精度	True（需GPU支持）
+    evaluation_strategy	验证方式	"epoch" 或 "steps"
+    logging_steps	每 N 步打印日志	10-50
+    resume_from_checkpoint	是否自动续训	True（建议开启）
+"""
+
 # ======= 训练参数 =======
 training_args = TrainingArguments(
     output_dir=save_path,
     per_device_train_batch_size=2,
     gradient_accumulation_steps=4,
     num_train_epochs=3,
-    learning_rate=2e-4,
+    learning_rate=1e-4,
     fp16=True,
     save_strategy="epoch",
     logging_steps=1,
