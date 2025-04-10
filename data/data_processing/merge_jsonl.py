@@ -7,7 +7,7 @@ files_to_merge = [
 ]
 
 # 输出文件名
-output_file = "../merged_attack_data.jsonl"
+output_file = "../fine_tune_data/merged_attack_data.jsonl"
 
 with open(output_file, "w", encoding="utf-8") as outfile:
     for file in files_to_merge:
