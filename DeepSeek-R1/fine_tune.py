@@ -92,9 +92,9 @@ data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
 # ======= 自定义 Trainer（打印 Step 状态）=======
 class MyTrainer(Trainer):
-    def training_step(self, model, inputs):
+    def training_step(self, model, inputs, **kwargs):
         step_start_time = time.time()
-        loss = super().training_step(model, inputs)
+        loss = super().training_step(model, inputs, **kwargs)  # 把多余参数也传进去
         step_time = time.time() - step_start_time
         current_step = self.state.global_step
         total_steps = self.state.max_steps
