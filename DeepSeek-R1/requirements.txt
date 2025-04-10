@@ -1,0 +1,5 @@
+transformers>=4.37.0
+datasets
+peft
+accelerate
+bitsandbytes
