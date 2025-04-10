@@ -18,10 +18,10 @@ from peft import (
 """微调脚本"""
 
 # ======= 配置 =======
-model_name = "deepseek-ai/deepseek-llm-7b-base"
-train_path = "./data/train.jsonl"
-eval_path = "./data/val.jsonl"
-save_path = "./deepseek-lora-output"
+model_name = "models/DeepSeek-R1-Distill-Qwen-7B"
+train_path = "data/train1.jsonl"
+eval_path = "data/val.jsonl"
+save_path = "models/deepseek-lora-output"
 
 # ======= 加载数据 =======
 def load_jsonl_dataset(path):
@@ -78,23 +78,28 @@ tokenized_eval = eval_dataset.map(tokenize)
 # ======= 训练参数 =======
 training_args = TrainingArguments(
     output_dir=save_path,
-    per_device_train_batch_size=2,
-    gradient_accumulation_steps=4,
+    per_device_train_batch_size=8,
+    gradient_accumulation_steps=2,
     num_train_epochs=3,
     learning_rate=1e-4,
     fp16=True,
-    save_strategy="epoch",
+    evaluation_strategy="steps",       # 每隔多少步做一次验证
+    eval_steps=100,                   # 验证步数间隔
+    save_strategy="steps",             # 每隔多少步保存一次模型
+    save_steps=100,                   # 保存步数间隔
+    save_total_limit=1,                # 最多只保留 1 个最新 checkpoint
     logging_steps=1,
-    report_to="none"
+    report_to="none",
+    load_best_model_at_end=True        # 根据 eval_loss 选择最好的模型（可选）
 )
 
 data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
 # ======= 自定义 Trainer（打印 Step 状态）=======
 class MyTrainer(Trainer):
-    def training_step(self, model, inputs, **kwargs):
+    def training_step(self, model, inputs, num_items):
         step_start_time = time.time()
-        loss = super().training_step(model, inputs, **kwargs)  # 把多余参数也传进去
+        loss = super().training_step(model, inputs, num_items)  # 注意这里也传入 num_items
         step_time = time.time() - step_start_time
         current_step = self.state.global_step
         total_steps = self.state.max_steps
@@ -124,7 +129,7 @@ trainer = MyTrainer(
 
 start_time = time.time()
 print("开始微调...\n")
-trainer.train(resume_from_checkpoint=True)
+trainer.train(resume_from_checkpoint=False)
 end_time = time.time()
 print(f"\n训练完成！总耗时：{end_time - start_time:.2f} 秒 ≈ {(end_time - start_time)/60:.2f} 分钟")
 
