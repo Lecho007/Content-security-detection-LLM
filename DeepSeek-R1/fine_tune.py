@@ -15,6 +15,8 @@ from peft import (
     prepare_model_for_kbit_training
 )
 
+"""微调脚本"""
+
 # ======= 配置 =======
 model_name = "deepseek-ai/deepseek-llm-7b-base"
 train_path = "./data/train.jsonl"

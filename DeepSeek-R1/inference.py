@@ -2,6 +2,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 from peft import PeftModel
 
+"""推理脚本"""
+
 # 配置
 base_model_path = "deepseek-ai/deepseek-llm-7b-base"
 finetuned_model_path = "./deepseek-lora-output"  # 你的 LoRA 微调模型保存目录
