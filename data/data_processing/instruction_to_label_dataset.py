@@ -18,7 +18,7 @@ label_map = {
     "身体伤害": 13,
     "财产隐私": 14,
     "道德伦理": 15,
-    "正常文本": 16
+    "正常类型": 16
 }
 
 def extract_label(instruction):
@@ -44,4 +44,4 @@ def convert_dataset(input_path, output_path):
 
 # 修改文件路径运行
 if __name__ == "__main__":
-    convert_dataset("raw_data.jsonl", "train.json")
+    convert_dataset("val_normal1.jsonl", "val_normal_new.jsonl")
