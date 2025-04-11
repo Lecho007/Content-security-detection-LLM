@@ -10,9 +10,9 @@ from tqdm import tqdm
 """
 
 # ✅ 模型和分词器路径
-MODEL_PATH = "./macbert_attack_classifier_output"
-INPUT_JSONL = "inference_input.jsonl"
-OUTPUT_JSONL = "inference_output.jsonl"
+MODEL_PATH = "../../models/chiness-macbert-base_output"
+INPUT_JSONL = "data/test_data.jsonl"      # ← 替换成输入文件名
+OUTPUT_JSONL = "data/inference_output.jsonl"    # ← 推理后输出文件名
 
 # ✅ 设备配置
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
