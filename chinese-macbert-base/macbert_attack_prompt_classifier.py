@@ -39,13 +39,13 @@ class AttackPromptDataset(Dataset):
         }
 
 # ✅ 加载模型与分词器
-model_name = "hfl/chinese-macbert-base"
+model_name = "../../models/chinese-macbert-base"
 tokenizer = BertTokenizer.from_pretrained(model_name)
-model = BertForSequenceClassification.from_pretrained(model_name, num_labels=3)  # ← 修改标签数！
+model = BertForSequenceClassification.from_pretrained(model_name, num_labels=17)  # ← 修改标签数！
 
 # ✅ 加载数据集
-train_dataset = AttackPromptDataset("train.json", tokenizer)
-eval_dataset = AttackPromptDataset("dev.json", tokenizer)
+train_dataset = AttackPromptDataset("data/train_normal.json", tokenizer)
+eval_dataset = AttackPromptDataset("data/val.json", tokenizer)
 
 """
 output_dir：保存模型的文件夹路径。
@@ -63,7 +63,7 @@ save_total_limit=2：最多保留两个 checkpoint。
 
 # ✅ 微调参数
 training_args = TrainingArguments(
-    output_dir="./macbert_attack_classifier_output",  # ← 自定义保存路径
+    output_dir="../../models/chiness-macbert-base_output",  # ← 自定义保存路径
     num_train_epochs=3,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
@@ -86,5 +86,5 @@ trainer = Trainer(
 trainer.train()
 
 # ✅ 保存模型（可选手动）
-trainer.save_model("./macbert_attack_classifier_output")
-tokenizer.save_pretrained("./macbert_attack_classifier_output")
+trainer.save_model("../../models/chiness-macbert-base_output")
+tokenizer.save_pretrained("../../models/chiness-macbert-base_output")
