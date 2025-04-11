@@ -18,10 +18,10 @@ from collections import defaultdict
 random.seed(42)
 
 # ===== 配置区域 =====
-input_file = "remaining_70_percent.jsonl"  # 原始数据集路径
-selected_file = "val.jsonl"  # 抽样6%保存路径
-remaining_file = "remaining_70_percent.jsonl"  # 剩下95%保存路径
-sample_ratio = 0.06  # 抽样比例
+input_file = "normal_prompts_expanded.jsonl"  # 原始数据集路径
+selected_file = "val1.jsonl"  # 抽样15%保存路径
+remaining_file = "train1.jsonl"  # 剩下85%保存路径
+sample_ratio = 0.3  # 抽样比例
 # ====================
 
 # 分类存储数据
@@ -62,5 +62,5 @@ with open(remaining_file, 'w', encoding='utf-8') as f:
         f.write(json.dumps(item, ensure_ascii=False) + '\n')
 
 print(f"✅ 抽样完成：")
-print(f"    ✔ 选中数据（30%）共 {len(selected_data)} 条，保存至 {selected_file}")
-print(f"    ✔ 剩余数据（70%）共 {len(remaining_data)} 条，保存至 {remaining_file}")
+print(f"    ✔ 选中数据（15%）共 {len(selected_data)} 条，保存至 {selected_file}")
+print(f"    ✔ 剩余数据（85%）共 {len(remaining_data)} 条，保存至 {remaining_file}")

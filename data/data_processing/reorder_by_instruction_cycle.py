@@ -4,8 +4,8 @@ from itertools import cycle
 
 """将数据集按 instruction 字段的类型轮流排列"""
 
-input_path = "train.jsonl"
-output_path = "train1.jsonl"
+input_path = "val_normal.jsonl"
+output_path = "val_normal.jsonl"
 
 # 1. 分类存储所有数据
 category_data = defaultdict(list)

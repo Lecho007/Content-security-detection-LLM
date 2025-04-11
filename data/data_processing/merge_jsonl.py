@@ -1,13 +1,11 @@
 # 要合并的文件列表
 files_to_merge = [
-    "jade_benchmark_zh_expand_converted_data.jsonl",
-    "jade_benchmark_medium_zh_expand_converted_data.jsonl",
-    "instruction_attack_scenarios_converted_data.jsonl",
-    "typical_safety_scenarios_converted_data.jsonl"
+    "val.jsonl",
+    "val1.jsonl",
 ]
 
 # 输出文件名
-output_file = "../fine_tune_data/merged_attack_data.jsonl"
+output_file = "val_normal.jsonl"
 
 with open(output_file, "w", encoding="utf-8") as outfile:
     for file in files_to_merge:

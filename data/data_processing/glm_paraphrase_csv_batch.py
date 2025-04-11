@@ -7,7 +7,7 @@ from zhipuai import ZhipuAI
 """
 
 # -------- 配置区域 --------
-API_KEY = "f41f762be4f9453aa5b6ee79c36c6d0e.2w1uBInSVMWzpIPc"  # ← 填自己的 ZhipuAI 密钥
+API_KEY = ""  # ← 填自己的 ZhipuAI 密钥
 MODEL_NAME = "glm-4-air"  # 可替换为 "glm-4-plus"
 INPUT_CSV = "jade_benchmark_zh.csv"  # 原始数据
 OUTPUT_CSV = "jade_benchmark_zh_expand_1.csv"  # 扩充后的数据
