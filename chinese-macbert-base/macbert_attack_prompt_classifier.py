@@ -44,8 +44,8 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=17)  # ← 修改标签数！
 
 # ✅ 加载数据集
-train_dataset = AttackPromptDataset("data/train.json", tokenizer)
-eval_dataset = AttackPromptDataset("data/val.json", tokenizer)
+train_dataset = AttackPromptDataset("data/train.jsonl", tokenizer)
+eval_dataset = AttackPromptDataset("data/val.jsonl", tokenizer)
 
 """
 output_dir：保存模型的文件夹路径。
@@ -68,7 +68,9 @@ training_args = TrainingArguments(
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
     evaluation_strategy="epoch",
+    eval_steps=200,
     save_strategy="epoch",
+    save_steps=200,
     logging_steps=100,
     load_best_model_at_end=True,
     save_total_limit=2,
