@@ -44,7 +44,7 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertForSequenceClassification.from_pretrained(model_name, num_labels=17)  # ← 修改标签数！
 
 # ✅ 加载数据集
-train_dataset = AttackPromptDataset("data/train_normal.json", tokenizer)
+train_dataset = AttackPromptDataset("data/train.json", tokenizer)
 eval_dataset = AttackPromptDataset("data/val.json", tokenizer)
 
 """
