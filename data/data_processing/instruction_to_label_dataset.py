@@ -44,4 +44,4 @@ def convert_dataset(input_path, output_path):
 
 # 修改文件路径运行
 if __name__ == "__main__":
-    convert_dataset("val_normal1.jsonl", "val_normal_new1.jsonl")
+    convert_dataset("test_data.jsonl", "test_data.jsonl")

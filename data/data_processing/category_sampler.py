@@ -18,10 +18,10 @@ from collections import defaultdict
 random.seed(42)
 
 # ===== 配置区域 =====
-input_file = "normal_prompts_expanded.jsonl"  # 原始数据集路径
-selected_file = "val1.jsonl"  # 抽样15%保存路径
+input_file = "merged_attack_data.jsonl"  # 原始数据集路径
+selected_file = "test_data.jsonl"  # 抽样15%保存路径
 remaining_file = "train1.jsonl"  # 剩下85%保存路径
-sample_ratio = 0.3  # 抽样比例
+sample_ratio = 0.1  # 抽样比例
 # ====================
 
 # 分类存储数据

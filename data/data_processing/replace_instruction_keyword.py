@@ -2,8 +2,8 @@ import json
 
 """将 JSONL 文件中所有 "instruction" 字段里出现的 “侵害权益” 替换为 “侵犯权益”"""
 
-input_path = "val_normal.jsonl"               # ← 原始 JSONL 文件路径
-output_path = "val_normal1.jsonl"     # ← 输出替换后的文件路径
+input_path = "test_data.jsonl"               # ← 原始 JSONL 文件路径
+output_path = "test_data.jsonl"  # ← 输出替换后的文件路径
 
 # 读取并处理每一行
 with open(input_path, 'r', encoding='utf-8') as f_in, open(output_path, 'w', encoding='utf-8') as f_out:
