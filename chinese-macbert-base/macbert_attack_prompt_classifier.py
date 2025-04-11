@@ -47,6 +47,20 @@ model = BertForSequenceClassification.from_pretrained(model_name, num_labels=3) 
 train_dataset = AttackPromptDataset("train.json", tokenizer)
 eval_dataset = AttackPromptDataset("dev.json", tokenizer)
 
+"""
+output_dir：保存模型的文件夹路径。
+
+num_train_epochs：训练轮数。
+
+per_device_train_batch_size：每张卡训练 batch。
+
+evaluation_strategy="epoch"：每个 epoch 进行一次验证。
+
+load_best_model_at_end：根据验证集结果自动保留最优模型。
+
+save_total_limit=2：最多保留两个 checkpoint。
+"""
+
 # ✅ 微调参数
 training_args = TrainingArguments(
     output_dir="./macbert_attack_classifier_output",  # ← 自定义保存路径
